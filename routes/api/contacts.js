@@ -7,6 +7,7 @@ const {
 } = require("../../models/validation");
 const contactOperations = require("../../models/index");
 
+
 router.get("/", async (req, res, next) => {
   try {
     const contacts = await contactOperations.listContacts();
@@ -39,6 +40,7 @@ router.post("/", validationAddContact, async (req, res, next) => {
       code: 201,
       data: { newContact },
     });
+    res.json({ status: "success", code: 200, data: { contact } });
   } catch (error) {
     next(error);
   }
@@ -112,5 +114,6 @@ router.delete("/:contactId", async (req, res, next) => {
     next(error);
   }
 });
+
 
 module.exports = router;
