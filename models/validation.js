@@ -16,6 +16,10 @@ const schemaUpdateContact = Joi.object({
   phone: Joi.number().optional(),
 }).or("name", "email", "phone");
 
+const schemaContactFavorite = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
 const validate = async (schema, obj, next) => {
   try {
     await schema.validateAsync(obj);
@@ -34,5 +38,8 @@ module.exports = {
   },
   validationUpdateContact: (req, res, next) => {
     return validate(schemaUpdateContact, req.body, next);
+  },
+  validationContactFavorite: (req, res, next) => {
+    return validate(schemaContactFavorite, req.body, next);
   },
 };
