@@ -3,10 +3,10 @@ const router = express.Router();
 const userOperation = require("../../models/users/index");
 const { validationUser } = require("../../models/users/validation");
 
-router.post("/register", validationUser, userOperation.register);
+router.post("/signup", validationUser, userOperation.signup);
 
 router.post("/login", validationUser, userOperation.login);
 
-router.post("/logout", validationUser, userOperation.logout);
+router.post("/logout", userOperation.logout);
 
 module.exports = router;

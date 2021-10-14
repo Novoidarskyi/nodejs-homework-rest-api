@@ -14,7 +14,7 @@ const validate = async (schema, obj, next) => {
   } catch (err) {
     next({
       status: 400,
-      message: err.message.replace("missing required name field"),
+      message: err.message.replace("_"),
     });
   }
 };
