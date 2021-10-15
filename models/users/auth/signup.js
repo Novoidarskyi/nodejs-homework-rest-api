@@ -1,7 +1,9 @@
-const User = require("./user");
+const bcrypt = require("bcryptjs");
+const User = require("../user");
 
 const signup = async (req, res) => {
-  const { email } = req.body;
+  const { email, password } = req.body;
+
   const user = await User.findOne({ email });
   if (user) {
     res.status(409).json({
@@ -11,7 +13,9 @@ const signup = async (req, res) => {
     });
     return;
   }
-  const { subscription } = await User.create(req.body);
+  const hasPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  const newUser = { email, password: hasPassword };
+  const { subscription } = await User.create(newUser);
   res.status(201).json({
     status: "created",
     code: 201,
@@ -19,12 +23,4 @@ const signup = async (req, res) => {
   });
 };
 
-const login = async (req, res) => {};
-
-const logout = async (req, res) => {};
-
-module.exports = {
-  signup,
-  login,
-  logout,
-};
+module.exports = signup;
