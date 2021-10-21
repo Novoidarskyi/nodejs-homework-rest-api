@@ -10,4 +10,6 @@ router.post("/login", validationUser, userOperation.login);
 
 router.post("/logout", authenticate, userOperation.logout);
 
+router.get("/current", authenticate, userOperation.current);
+
 module.exports = router;

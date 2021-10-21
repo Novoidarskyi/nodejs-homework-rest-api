@@ -1,7 +1,7 @@
 const Contact = require("./contact");
 
-async function listContacts() {
-  return Contact.find({}, "_id name email phone favorite");
+async function listContacts(id) {
+  return Contact.find({ owner: id }, "_id name email phone favorite");
 }
 
 async function getContactById(contactId) {
