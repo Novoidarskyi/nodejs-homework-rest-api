@@ -4,6 +4,7 @@ const {
   validationAddContact,
   validationUpdateContact,
   validationContactFavorite,
+
 } = require("../../models/contacts/validation");
 const authenticate = require("../../middlewares/authenticate");
 const contactOperations = require("../../models/contacts/index");
@@ -33,6 +34,7 @@ router.get("/:contactId", authenticate, async (req, res, next) => {
   }
 });
 
+
 router.post("/", authenticate, validationAddContact, async (req, res, next) => {
   try {
     const result = { ...req.body, owner: req.user._id };
@@ -46,6 +48,7 @@ router.post("/", authenticate, validationAddContact, async (req, res, next) => {
     next(error);
   }
 });
+
 
 router.put(
   "/:contactId",
@@ -124,5 +127,4 @@ router.delete("/:contactId", authenticate, async (req, res, next) => {
     next(error);
   }
 });
-
 module.exports = router;
