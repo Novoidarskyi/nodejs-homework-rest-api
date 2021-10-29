@@ -14,6 +14,6 @@ router.post("/logout", authenticate, userOperation.logout);
 
 router.get("/current", authenticate, userOperation.current);
 
-router.post("/avatars", upload.single("image"), uploadAvatar);
+router.patch("/avatars", authenticate, upload.single("image"), uploadAvatar);
 
 module.exports = router;
