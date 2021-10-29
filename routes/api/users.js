@@ -6,6 +6,7 @@ const authenticate = require("../../middlewares/authenticate");
 const upload = require("../../middlewares/uploadFiles");
 const uploadAvatar = require("../../models/users/uploadAvatar");
 
+
 router.post("/signup", validationUser, userOperation.signup);
 
 router.post("/login", validationUser, userOperation.login);

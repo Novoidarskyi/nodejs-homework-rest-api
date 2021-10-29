@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 const gravatar = require("gravatar");
 
+
+
 const userSchema = Schema(
   {
     password: {
