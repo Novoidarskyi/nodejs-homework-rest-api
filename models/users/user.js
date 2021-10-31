@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 const gravatar = require("gravatar");
 const { nanoid } = require("nanoid");
 
+
 const userSchema = Schema(
   {
     password: {
