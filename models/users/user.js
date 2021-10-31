@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const gravatar = require("gravatar");
+const { nanoid } = require("nanoid");
 
 const userSchema = Schema(
   {
@@ -34,6 +35,7 @@ const userSchema = Schema(
     verifyToken: {
       type: String,
       required: [true, "Verify token is required"],
+      default: nanoid(),
     },
   },
   { versionKey: false, timestamps: true }
