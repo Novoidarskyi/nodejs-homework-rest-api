@@ -17,6 +17,16 @@ const login = async (req, res) => {
     return;
   }
 
+  const { verify } = user;
+  if (!verify) {
+    res.status(400).json({
+      status: "error",
+      code: 400,
+      message: "Please, verificated your email",
+    });
+    return;
+  }
+
   const payload = { _id: user._id };
 
   const token = jwt.sign(payload, SECRET_KEY);
