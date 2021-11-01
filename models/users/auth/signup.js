@@ -32,6 +32,7 @@ const signup = async (req, res) => {
     console.log(error);
   }
 
+  const { subscription, avatarURL } = await User.create(newUser);
   res.status(201).json({
     status: "created",
     code: 201,
